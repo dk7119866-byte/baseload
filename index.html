@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BaseLoad Audit Report</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <section class="auth-panel" id="authPanel">
+        <div class="auth-header">
+          <div class="brand-mini">BASELOAD</div>
+          <div class="auth-tag">Secure access required</div>
+        </div>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" type="button" data-mode="signin">Sign In</button>
+          <button class="auth-tab" type="button" data-mode="signup">Create Account</button>
+        </div>
+
+        <div class="auth-card">
+          <form id="signinForm" class="auth-form active">
+            <div class="field-row">
+              <label for="signin-email">Email</label>
+              <input id="signin-email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field-row">
+              <label for="signin-password">Password</label>
+              <input id="signin-password" type="password" placeholder="Enter password" required />
+            </div>
+            <button type="submit" class="primary-btn">Sign In</button>
+          </form>
+
+          <form id="signupForm" class="auth-form">
+            <div class="field-row">
+              <label for="signup-name">Full name</label>
+              <input id="signup-name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div class="field-row">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field-row">
+              <label for="signup-password">Password</label>
+              <input id="signup-password" type="password" placeholder="Create password" required />
+            </div>
+            <button type="submit" class="primary-btn">Create Account</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <main class="document hidden" id="documentContainer">
+      <section class="download-strip">
+        <button type="button" class="pdf-btn" id="downloadPdfBtn">Download as PDF</button>
+      </section>
+
+      <section class="page">
+        <header class="brand-header">
+          <h1>BASELOAD</h1>
+          <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
+        </header>
+
+        <div class="banner blue-bar">
+          <h2>RESCUE AUDIT FIELD SHEET</h2>
+          <p>
+            Internal working document. This sheet stays in the office and never goes to the client. The client-facing
+            Rescue Report is produced from it.
+          </p>
+        </div>
+
+        <section class="content-section">
+          <h3>REPORT DETAILS</h3>
+
+          <div class="report-grid">
+            <div class="row">
+              <label>Report ref.</label>
+              <span class="value"> </span>
+            </div>
+            <div class="row">
+              <label>Audit date</label>
+              <span class="value date"> / / </span>
+            </div>
+            <div class="row">
+              <label>Client name</label>
+              <span class="value"> </span>
+            </div>
+            <div class="row">
+              <label>Contact no.</label>
+              <span class="value"> </span>
+            </div>
+            <div class="row wide">
+              <label>Site address</label>
+              <span class="value"> </span>
+            </div>
+            <div class="row zone">
+              <label>Zone</label>
+              <span class="value option-list">
+                <span class="option"><span class="checkbox"></span> A Lagos</span>
+                <span class="option"><span class="checkbox"></span> B Southwest (+N50,000)</span>
+                <span class="option"><span class="checkbox"></span> C Other state (by quote)</span>
+              </span>
+            </div>
+            <div class="row half">
+              <label>System band</label>
+              <span class="value option-list stacked">
+                <span class="option"><span class="checkbox"></span> Small residential (BAFEM Solar)</span>
+                <span class="option"><span class="checkbox"></span> Large residential (BAFEM Solar)</span>
+                <span class="option"><span class="checkbox"></span> C&I (Commercial Solar)</span>
+              </span>
+            </div>
+            <div class="row half">
+              <label>Auditor(s)</label>
+              <span class="value"> </span>
+            </div>
+            <div class="row half">
+              <label>Weather at audit</label>
+              <span class="value option-list inline">
+                <span class="option"><span class="checkbox"></span> Clear</span>
+                <span class="option"><span class="checkbox"></span> Partly cloudy</span>
+                <span class="option"><span class="checkbox"></span> Overcast</span>
+                <span class="option"><span class="checkbox"></span> Rain</span>
+              </span>
+            </div>
+            <div class="row half">
+              <label>Delivered under</label>
+              <span class="value option-list stacked">
+                <span class="option"><span class="checkbox"></span> BAFEM Solar (residential)</span>
+                <span class="option"><span class="checkbox"></span> Commercial Solar (C&amp;I)</span>
+                <span class="option"><span class="checkbox"></span> Care partner: BaseLoad</span>
+              </span>
+            </div>
+            <div class="row">
+              <label>Legacy BAFEM client?</label>
+              <span class="value inline-answer">
+                <span class="option"><span class="checkbox"></span> Yes</span>
+                <span class="option"><span class="checkbox"></span> No</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="report-footnote">
+            <p>
+              Report ref. format: BLD-RSC-[client code]-[year]-[serial]
+            </p>
+            <p>
+              client code = a short abbreviation of the client or site (e.g. BF, CK); serial = a running number, 001, 002, 003.
+              Example: BLD-RSC-BF-2027-001
+            </p>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h3>SYSTEM OVERVIEW (AS FOUND)</h3>
+
+          <div class="overview-grid">
+            <div class="row row-odd"><label>Install date / est. age</label><span class="value"> </span></div>
+            <div class="row row-odd"><label>Original installer</label><span class="value inline-answer">
+              <span class="option"><span class="checkbox checked"></span> Known</span>
+              <span class="option"><span class="checkbox"></span> Orphaned</span>
+              <span class="option"><span class="checkbox"></span> Self-installed</span>
+              <span class="option"><span class="checkbox"></span> Unknown</span>
+              <span class="indented-line">if known, name: </span>
+            </span></div>
+            <div class="row row-odd"><label>PV array (make, model, qty, total Wp)</label><span class="value"> </span></div>
+            <div class="row row-odd"><label>Inverter (make, model, rating, firmware)</label><span class="value"> </span></div>
+            <div class="row row-odd"><label>Battery (make, model, chemistry, kWh, qty)</label><span class="value"> </span></div>
+            <div class="row row-odd"><label>Panel mounting / roof type</label><span class="value"> </span></div>
+            <div class="row row-odd"><label>Inverter &amp; battery location</label><span class="value"> </span></div>
+            <div class="row row-odd monitoring-row"><label>Monitoring (logger present? data flowing?)</label><span class="value inline-answer monitoring-answer">
+              <span class="option"><span class="checkbox"></span> Logger present</span>
+              <span class="option"><span class="checkbox"></span> Data flowing</span>
+            </span></div>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span class="confidential">CONFIDENTIAL</span>
+          <span>• Internal field sheet. Not for the client. Baseload Renewable Asset Management Limited.</span>
+          <span class="page-number">Page 1</span>
+        </footer>
+      </section>
+
+      <section class="page">
+        <header class="brand-header">
+          <h1>BASELOAD</h1>
+          <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
+        </header>
+
+        <div class="audit-findings-header">
+          <h3>AUDIT FINDINGS</h3>
+          <p>Rate each area and note what you found. Photograph every flagged area on the audit phone; photos are filed against the report ref. check at the office.</p>
+          <div class="severity-guide">
+            <span>Severity guide:</span>
+            <span class="critical">Critical</span> <span>(unsafe or system-down, act now)</span>
+            <span class="attention">Needs attention</span> <span>(degrading, fix soon)</span>
+            <span class="advisory">Advisory</span> <span>(improvement)</span>
+            <span class="ok">OK</span> <span>(no action).</span>
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <div class="finding-title"><span class="index">1.</span> Array &amp; mounting</div>
+          <p>Check Panel condition and soiling, visible hotspots or cracks, module clamps and rails, roof penetrations and leak points, structural integrity.</p>
+          <div class="severity-row">
+            <span>Severity</span>
+            <span class="option"><span class="checkbox"></span> Critical</span>
+            <span class="option"><span class="checkbox"></span> Needs attention</span>
+            <span class="option"><span class="checkbox"></span> Advisory</span>
+            <span class="option"><span class="checkbox"></span> OK</span>
+          </div>
+          <div class="notes-line">Findings &amp; notes</div>
+          <div class="photo-row">
+            <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+            <span>How many:</span>
+            <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <div class="finding-title"><span class="index">2.</span> DC side</div>
+          <p>Check String voltages and polarity, DC isolators, cable sizing and routing, MC4 connector quality and crimps, earthing and surge protection (SPD).</p>
+          <div class="severity-row">
+            <span>Severity</span>
+            <span class="option"><span class="checkbox"></span> Critical</span>
+            <span class="option"><span class="checkbox"></span> Needs attention</span>
+            <span class="option"><span class="checkbox"></span> Advisory</span>
+            <span class="option"><span class="checkbox"></span> OK</span>
+          </div>
+          <div class="notes-line">Findings &amp; notes</div>
+          <div class="photo-row">
+            <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+            <span>How many:</span>
+            <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <div class="finding-title"><span class="index">3.</span> Inverter</div>
+          <p>Check Error and event logs, firmware version, configuration and settings, ventilation and mounting, display and comms status.</p>
+          <div class="severity-row">
+            <span>Severity</span>
+            <span class="option"><span class="checkbox"></span> Critical</span>
+            <span class="option"><span class="checkbox"></span> Needs attention</span>
+            <span class="option"><span class="checkbox"></span> Advisory</span>
+            <span class="option"><span class="checkbox"></span> OK</span>
+          </div>
+          <div class="notes-line">Findings &amp; notes</div>
+          <div class="photo-row">
+            <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+            <span>How many:</span>
+            <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <div class="finding-title"><span class="index">4.</span> Battery health check</div>
+          <p>Check Module temperatures, voltage balance across the bank, BMS status and error logs, state-of-health trend from monitoring data, terminals and connections.</p>
+          <div class="severity-row">
+            <span>Severity</span>
+            <span class="option"><span class="checkbox"></span> Critical</span>
+            <span class="option"><span class="checkbox"></span> Needs attention</span>
+            <span class="option"><span class="checkbox"></span> Advisory</span>
+            <span class="option"><span class="checkbox"></span> OK</span>
+          </div>
+          <div class="notes-line">Findings &amp; notes</div>
+          <div class="photo-row">
+            <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+            <span>How many:</span>
+            <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <div class="finding-title"><span class="index">5.</span> AC side &amp; protection</div>
+          <p>Check Distribution board, breakers and fuses, RCD, changeover / ATS operation, load balance, neutral and earth bonding.</p>
+          <div class="severity-row">
+            <span>Severity</span>
+            <span class="option"><span class="checkbox"></span> Critical</span>
+            <span class="option"><span class="checkbox"></span> Needs attention</span>
+            <span class="option"><span class="checkbox"></span> Advisory</span>
+            <span class="option"><span class="checkbox"></span> OK</span>
+          </div>
+          <div class="notes-line">Findings &amp; notes</div>
+          <div class="photo-row">
+            <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+            <span>How many:</span>
+            <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+          </div>
+        </div>
+
+        <footer class="page-footer">
+          <span class="confidential">CONFIDENTIAL</span>
+          <span>• Internal field sheet. Not for the client. Baseload Renewable Asset Management Limited.</span>
+          <span class="page-number">Page 2</span>
+        </footer>
+      </section>
+
+      <section class="page">
+        <header class="brand-header">
+          <h1>BASELOAD</h1>
+          <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
+        </header>
+
+        <div class="finding-group">
+          <div class="finding-item narrow">
+            <div class="finding-title"><span class="index">6.</span> Monitoring &amp; connectivity</div>
+            <p>Check Logger present and compatible, data reaching the platform, connectivity method (WiFi / MiFi / GSM), gaps in history.</p>
+            <div class="severity-row">
+              <span>Severity</span>
+              <span class="option"><span class="checkbox"></span> Critical</span>
+              <span class="option"><span class="checkbox"></span> Needs attention</span>
+              <span class="option"><span class="checkbox"></span> Advisory</span>
+              <span class="option"><span class="checkbox"></span> OK</span>
+            </div>
+            <div class="notes-line">Findings &amp; notes</div>
+            <div class="photo-row">
+              <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+              <span>How many:</span>
+              <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="finding-item narrow">
+            <div class="finding-title"><span class="index">7.</span> Performance</div>
+            <p>Check Actual yield vs expected for the array size and site, autonomy behaviour, unusual grid or generator dependence despite solar.</p>
+            <div class="severity-row">
+              <span>Severity</span>
+              <span class="option"><span class="checkbox"></span> Critical</span>
+              <span class="option"><span class="checkbox"></span> Needs attention</span>
+              <span class="option"><span class="checkbox"></span> Advisory</span>
+              <span class="option"><span class="checkbox"></span> OK</span>
+            </div>
+            <div class="notes-line">Findings &amp; notes</div>
+            <div class="photo-row">
+              <label class="photo-toggle"><span class="photo-box"></span> Photos taken</label>
+              <span>How many:</span>
+              <input type="number" class="photo-count" min="0" value="" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-panel">
+          <h3>FINDINGS SUMMARY</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Area</th>
+                <th>Issue found</th>
+                <th>Severity</th>
+                <th>Recommended action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>2</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>3</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>4</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>5</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>6</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>7</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+              <tr><td>8</td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td><td contenteditable="true" class="summary-text-cell"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="health-panel">
+          <h3>OVERALL SYSTEM HEALTH VERDICT</h3>
+          <div class="verdict-row"><span class="checkbox small"></span><span class="label healthy">Healthy</span> <span>System sound. Recommend a Baseload Monitor or Maintain care plan to keep it that way.</span></div>
+          <div class="verdict-row"><span class="checkbox small"></span><span class="label attention">Needs remediation</span> <span>Faults found; remediation quote to follow. System recoverable.</span></div>
+          <div class="verdict-row"><span class="checkbox small"></span><span class="label critical">Unsafe, urgent action required</span> <span>Do not operate until critical items are resolved.</span></div>
+          <div class="verdict-row"><span class="checkbox small"></span><span class="label neutral">Not economically salvageable</span> <span>Repair cost approaches replacement; new-system proposal recommended.</span></div>
+        </div>
+
+        <div class="summary-note-box">
+          <p class="summary-verdict-label">Auditor's summary verdict</p>
+          <div class="summary-editable-box" contenteditable="true" spellcheck="true" aria-label="Auditor summary verdict details"></div>
+        </div>
+
+        <footer class="page-footer">
+          <span class="confidential">CONFIDENTIAL</span>
+          <span>• Internal field sheet. Not for the client. Baseload Renewable Asset Management Limited.</span>
+          <span class="page-number">Page 3</span>
+        </footer>
+      </section>
+
+      <section class="page">
+        <header class="brand-header">
+          <h1>BASELOAD</h1>
+          <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
+        </header>
+
+        <div class="section-header slim">
+          <h3>RECOMMENDED REMEDIATION</h3>
+        </div>
+        <div class="remediation-box">
+          <p>
+            Summarise the recommended scope of work, critical items first. The office builds the itemised remediation quote and the client-facing Rescue Report from this.
+          </p>
+        </div>
+
+        <div class="section-header slim">
+          <h3>AUDITOR SIGN-OFF</h3>
+        </div>
+
+        <div class="signoff-box">
+          <div class="sign-cell"><label>Auditor name</label></div>
+          <div class="sign-cell"><label>Signature / date</label></div>
+        </div>
+
+        <footer class="page-footer">
+          <span class="confidential">CONFIDENTIAL</span>
+          <span>• Internal field sheet. Not for the client. Baseload Renewable Asset Management Limited.</span>
+          <span class="page-number">Page 4</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
