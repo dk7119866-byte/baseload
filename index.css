@@ -1054,6 +1054,264 @@ body {
   }
 }
 
+@media (max-width: 600px) {
+  body {
+    background: var(--page-bg);
+    overflow-x: hidden;
+  }
+
+  .app-shell,
+  .page,
+  .download-strip {
+    width: 100%;
+  }
+
+  .app-shell {
+    margin: 0;
+  }
+
+  .auth-panel {
+    width: calc(100% - 24px);
+    margin: 24px auto;
+    padding: 16px;
+  }
+
+  .auth-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .brand-mini {
+    font-size: 1.7rem;
+  }
+
+  .auth-tabs {
+    gap: 6px;
+  }
+
+  .auth-tab {
+    flex: 1;
+    padding: 9px 6px;
+    font-size: 0.78rem;
+  }
+
+  .document {
+    padding: 0;
+  }
+
+  .download-strip {
+    padding: 10px 12px;
+    margin: 0;
+  }
+
+  .pdf-btn {
+    width: 100%;
+  }
+
+  .page {
+    min-height: 0;
+    margin: 0 0 14px;
+    padding: 14px 12px 18px;
+    border-width: 2px;
+    box-shadow: none;
+  }
+
+  .brand-header {
+    margin-bottom: 12px;
+  }
+
+  .brand-header h1 {
+    font-size: 2rem;
+  }
+
+  .brand-sub {
+    font-size: 0.48rem;
+    letter-spacing: 0.12em;
+  }
+
+  .blue-bar {
+    padding: 10px 11px 11px;
+    margin-bottom: 14px;
+  }
+
+  .blue-bar h2 {
+    font-size: 1.18rem;
+    line-height: 1.05;
+  }
+
+  .blue-bar p,
+  .report-footnote,
+  .audit-findings-header p,
+  .finding-item p,
+  .severity-row,
+  .photo-row,
+  .verdict-row,
+  .summary-note-box,
+  .summary-editable-box,
+  .remediation-intro {
+    font-size: 0.72rem;
+  }
+
+  .content-section {
+    margin-top: 10px;
+  }
+
+  .content-section h3,
+  .audit-findings-header h3,
+  .summary-panel h3,
+  .health-panel h3,
+  .section-header h3 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .report-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1.6fr);
+    grid-template-rows: 42px 42px auto auto auto auto;
+  }
+
+  .report-grid .row label,
+  .report-grid .row .value,
+  .row label,
+  .row .value,
+  .option,
+  .notes-line,
+  .summary-panel tbody td,
+  .summary-text-cell {
+    font-size: 0.64rem;
+  }
+
+  .report-grid .row label {
+    padding: 8px 5px;
+  }
+
+  .report-grid .row .value {
+    min-height: 42px;
+    padding: 6px 5px;
+  }
+
+  .report-grid .option-list {
+    gap: 2px 4px;
+  }
+
+  .report-grid .option-list.stacked {
+    gap: 2px;
+  }
+
+  .report-grid .option {
+    gap: 3px;
+    line-height: 1.1;
+  }
+
+  .report-grid .checkbox,
+  .checkbox,
+  .photo-box {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+  }
+
+  .report-grid .value.date {
+    gap: 3px;
+    font-size: 0.65rem;
+  }
+
+  .date-slots {
+    gap: 2px;
+  }
+
+  .date-part {
+    width: 18px;
+    font-size: 0.62rem;
+  }
+
+  .date-part.date-year {
+    width: 30px;
+  }
+
+  .date-hint {
+    font-size: 0.55rem;
+  }
+
+  .report-footnote {
+    line-height: 1.25;
+  }
+
+  .overview-grid .row {
+    min-height: 38px;
+  }
+
+  .overview-grid .row label,
+  .overview-grid .row .value {
+    min-height: 38px;
+    padding: 7px 6px;
+  }
+
+  .overview-grid .row.monitoring-row .value.monitoring-answer {
+    padding-top: 8px;
+  }
+
+  .finding-item {
+    padding: 8px 10px 10px;
+    margin-bottom: 10px;
+  }
+
+  .finding-title {
+    font-size: 0.82rem;
+  }
+
+  .severity-row,
+  .photo-row {
+    gap: 6px 8px;
+  }
+
+  .photo-row {
+    flex-wrap: wrap;
+  }
+
+  .summary-panel {
+    overflow-x: auto;
+  }
+
+  .summary-panel table {
+    min-width: 560px;
+  }
+
+  .verdict-row {
+    align-items: flex-start;
+    line-height: 1.25;
+    margin: 8px 0;
+  }
+
+  .remediation-box {
+    min-height: 130px;
+    padding: 10px;
+  }
+
+  .signoff-box {
+    min-height: 64px;
+  }
+
+  .sign-cell {
+    min-height: 64px;
+    padding: 0 7px;
+    font-size: 0.68rem;
+  }
+
+  .page-footer {
+    position: static;
+    margin-top: 18px;
+    font-size: 0.5rem;
+    gap: 6px;
+    padding-top: 6px;
+  }
+
+  .page-footer > span:nth-child(2) {
+    flex: 1;
+  }
+}
+
 @media print {
   @page {
     size: A4 portrait;
