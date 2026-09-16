@@ -278,6 +278,173 @@ body {
   border-bottom: 0;
 }
 
+.report-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.8fr) minmax(0, 1.05fr) minmax(0, 1.8fr);
+  grid-template-rows: 56px 56px auto auto auto auto;
+}
+
+.report-grid .row {
+  display: contents;
+}
+
+.report-grid .row label,
+.report-grid .row .value {
+  min-width: 0;
+  border-bottom: 1px solid #b9b4ae;
+}
+
+.report-grid .row .value {
+  border-right: 1px solid #b9b4ae;
+}
+
+.report-grid .input-box {
+  background: #fff;
+  border: 1px solid #b9b4ae;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.report-grid .value {
+  background: #fff;
+  color: var(--ink);
+}
+
+.report-grid .row label,
+.report-grid .row .value {
+  border: 1px solid #ded8ca;
+}
+
+.report-grid .row label {
+  background: #f4efe5;
+  border-right-color: #ded8ca;
+}
+
+.report-grid .report-ref-row label {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.report-grid .report-ref-row .value {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.report-grid .audit-date-row label {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.report-grid .audit-date-row .value {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.report-grid .client-name-row label {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.report-grid .client-name-row .value {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.report-grid .contact-row label {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.report-grid .contact-row .value {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.report-grid .site-address-row label {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.report-grid .site-address-row .value {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.report-grid .zone-row label {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.report-grid .zone-row .value {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.report-grid .system-band-row label {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.report-grid .system-band-row .value {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.report-grid .auditor-row label {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+.report-grid .auditor-row .value {
+  grid-column: 4;
+  grid-row: 4;
+}
+
+.report-grid .weather-row label {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.report-grid .weather-row .value {
+  grid-column: 2;
+  grid-row: 5;
+}
+
+.report-grid .delivered-row label {
+  grid-column: 3;
+  grid-row: 5;
+}
+
+.report-grid .delivered-row .value {
+  grid-column: 4;
+  grid-row: 5;
+}
+
+.report-grid > .row:last-child label {
+  grid-column: 1;
+  grid-row: 6;
+}
+
+.report-grid > .row:last-child .value {
+  grid-column: 2 / 5;
+  grid-row: 6;
+}
+
+.report-grid .right-side-row .value {
+  background: #fff;
+  color: var(--ink);
+  border-left: 1px solid #ded8ca;
+}
+
+.report-grid .right-side-row .checkbox {
+  border-color: #2c3c4e;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.report-grid .right-side-row .checkbox.checked::after {
+  background: #0f2e4d;
+}
+
 .row {
   display: grid;
   grid-template-columns: 1.1fr 1.5fr;
@@ -335,13 +502,59 @@ body {
 }
 
 .row .value.date {
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.2rem;
 }
 
+.date-slots,
+.date-hint {
+  white-space: nowrap;
+}
+
+.date-slots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.date-part {
+  width: 24px;
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px solid #69727d;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+  font: inherit;
+  outline: none;
+}
+
+.date-part.date-year {
+  width: 48px;
+}
+
+.date-part:focus {
+  border-bottom-color: var(--navy-deep);
+}
+
+.date-hint {
+  color: #69727d;
+  font-size: 0.82em;
+  font-weight: 500;
+}
+
 .row.wide {
   grid-template-columns: 1.1fr 2.8fr;
+}
+
+.report-grid .site-address-row,
+.report-grid .right-side-row,
+.report-grid .system-band-row,
+.report-grid .weather-row {
+  grid-template-columns: 1.1fr 1.5fr;
 }
 
 .row.zone {
@@ -420,6 +633,11 @@ body {
 
 .overview-grid .row .value {
   min-height: 54px;
+  background: #fff;
+}
+
+.overview-grid .row label {
+  background: #f4efe5;
 }
 
 .overview-grid .row:last-child {
@@ -621,9 +839,17 @@ body {
 .remediation-box {
   min-height: 146px;
   border: 1px solid #b7b0a7;
-  background: rgba(255, 255, 255, 0.04);
+  background: #fff;
   margin-bottom: 26px;
   padding: 18px 16px;
+}
+
+.remediation-intro {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.02rem;
+  color: #69727d;
+  font-style: italic;
 }
 
 .remediation-box p {
@@ -634,10 +860,10 @@ body {
 
 .signoff-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   border: 1px solid #b7b0a7;
   min-height: 84px;
-  background: rgba(255, 255, 255, 0.04);
+  background: #fff;
 }
 
 .sign-cell {
@@ -651,6 +877,14 @@ body {
 
 .sign-cell:last-child {
   border-right: none;
+}
+
+.sign-label {
+  background: #f4efe5;
+}
+
+.sign-entry {
+  background: #fff;
 }
 
 .summary-panel {
@@ -915,6 +1149,10 @@ body {
     min-height: 18px;
   }
 
+  .report-grid {
+    grid-template-rows: 18px 18px auto auto auto auto;
+  }
+
   .row label,
   .option,
   .notes-line,
@@ -931,6 +1169,44 @@ body {
     min-height: 18px;
     padding: 4px 6px;
     font-size: 0.55rem;
+  }
+
+  .report-grid .cell-label {
+    padding: 6px;
+    font-size: 0.55rem;
+  }
+
+  .report-grid .value {
+    min-height: 18px;
+    padding: 4px 6px;
+    font-size: 0.55rem;
+    background: #fff !important;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-grid .row label,
+  .overview-grid .row label {
+    background: #f4efe5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .overview-grid .row .value {
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-grid .value.date {
+    font-size: 0.62rem;
+  }
+
+  .report-grid td.value.option-list.stacked .option,
+  .report-grid td.value.option-list.inline .option {
+    margin-top: 1px;
+    margin-bottom: 1px;
   }
 
   .finding-item {
@@ -978,6 +1254,28 @@ body {
   .summary-note-box,
   .summary-editable-box {
     min-height: 0;
+  }
+
+  .page-four .remediation-intro {
+    margin: 0 0 7px;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .page-four .remediation-box {
+    min-height: 116px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .page-four .signoff-box,
+  .page-four .sign-cell {
+    min-height: 70px;
+  }
+
+  .page-four .sign-cell {
+    padding: 0 8px;
+    font-size: 0.68rem;
   }
 
   .page-footer {

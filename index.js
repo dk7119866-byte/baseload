@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     documentContainer.classList.add('hidden');
   }
 
-  const editableFields = document.querySelectorAll('.value:not(.monitoring-answer), .notes-line, .summary-note-box p, .sign-cell, .remediation-box, .finding-item p, .audit-findings-header p');
+  const editableFields = document.querySelectorAll('.value:not(.monitoring-answer):not(.date), .notes-line, .summary-note-box p, .sign-cell, .remediation-box, .finding-item p, .audit-findings-header p');
 
   editableFields.forEach((field) => {
     if (!field.hasAttribute('contenteditable')) {

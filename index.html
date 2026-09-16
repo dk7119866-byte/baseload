@@ -13,38 +13,20 @@
           <div class="brand-mini">BASELOAD</div>
           <div class="auth-tag">Secure access required</div>
         </div>
-
         <div class="auth-tabs">
           <button class="auth-tab active" type="button" data-mode="signin">Sign In</button>
           <button class="auth-tab" type="button" data-mode="signup">Create Account</button>
         </div>
-
         <div class="auth-card">
           <form id="signinForm" class="auth-form active">
-            <div class="field-row">
-              <label for="signin-email">Email</label>
-              <input id="signin-email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div class="field-row">
-              <label for="signin-password">Password</label>
-              <input id="signin-password" type="password" placeholder="Enter password" required />
-            </div>
+            <div class="field-row"><label for="signin-email">Email</label><input id="signin-email" type="email" placeholder="you@example.com" required /></div>
+            <div class="field-row"><label for="signin-password">Password</label><input id="signin-password" type="password" placeholder="Enter password" required /></div>
             <button type="submit" class="primary-btn">Sign In</button>
           </form>
-
           <form id="signupForm" class="auth-form">
-            <div class="field-row">
-              <label for="signup-name">Full name</label>
-              <input id="signup-name" type="text" placeholder="Jane Doe" required />
-            </div>
-            <div class="field-row">
-              <label for="signup-email">Email</label>
-              <input id="signup-email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div class="field-row">
-              <label for="signup-password">Password</label>
-              <input id="signup-password" type="password" placeholder="Create password" required />
-            </div>
+            <div class="field-row"><label for="signup-name">Full name</label><input id="signup-name" type="text" placeholder="Jane Doe" required /></div>
+            <div class="field-row"><label for="signup-email">Email</label><input id="signup-email" type="email" placeholder="you@example.com" required /></div>
+            <div class="field-row"><label for="signup-password">Password</label><input id="signup-password" type="password" placeholder="Create password" required /></div>
             <button type="submit" class="primary-btn">Create Account</button>
           </form>
         </div>
@@ -52,49 +34,49 @@
     </div>
 
     <main class="document hidden" id="documentContainer">
-      <section class="download-strip">
-        <button type="button" class="pdf-btn" id="downloadPdfBtn">Download as PDF</button>
-      </section>
-
+      <section class="download-strip"><button type="button" class="pdf-btn" id="downloadPdfBtn">Download as PDF</button></section>
       <section class="page">
         <header class="brand-header">
           <h1>BASELOAD</h1>
           <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
         </header>
-
         <div class="banner blue-bar">
           <h2>RESCUE AUDIT FIELD SHEET</h2>
-          <p>
-            Internal working document. This sheet stays in the office and never goes to the client. The client-facing
-            Rescue Report is produced from it.
-          </p>
+          <p>Internal working document. This sheet stays in the office and never goes to the client. The client-facing Rescue Report is produced from it.</p>
         </div>
-
         <section class="content-section">
           <h3>REPORT DETAILS</h3>
-
           <div class="report-grid">
-            <div class="row">
+            <div class="row report-ref-row">
               <label>Report ref.</label>
-              <span class="value"> </span>
+              <span class="value input-box"> </span>
             </div>
-            <div class="row">
+            <div class="row right-side-row audit-date-row">
               <label>Audit date</label>
-              <span class="value date"> / / </span>
+              <span class="value date">
+                <span class="date-slots">
+                  <input class="date-part" type="text" inputmode="numeric" maxlength="2" aria-label="Day" />
+                  <span>/</span>
+                  <input class="date-part" type="text" inputmode="numeric" maxlength="2" aria-label="Month" />
+                  <span>/</span>
+                  <input class="date-part date-year" type="text" inputmode="numeric" maxlength="4" aria-label="Year" />
+                </span>
+                <span class="date-hint">(DD MM YYYY)</span>
+              </span>
             </div>
-            <div class="row">
+            <div class="row client-name-row">
               <label>Client name</label>
-              <span class="value"> </span>
+              <span class="value input-box"> </span>
             </div>
-            <div class="row">
+            <div class="row right-side-row contact-row">
               <label>Contact no.</label>
               <span class="value"> </span>
             </div>
-            <div class="row wide">
+            <div class="row wide site-address-row">
               <label>Site address</label>
-              <span class="value"> </span>
+              <span class="value input-box"> </span>
             </div>
-            <div class="row zone">
+            <div class="row zone right-side-row zone-row">
               <label>Zone</label>
               <span class="value option-list">
                 <span class="option"><span class="checkbox"></span> A Lagos</span>
@@ -102,7 +84,7 @@
                 <span class="option"><span class="checkbox"></span> C Other state (by quote)</span>
               </span>
             </div>
-            <div class="row half">
+            <div class="row half system-band-row">
               <label>System band</label>
               <span class="value option-list stacked">
                 <span class="option"><span class="checkbox"></span> Small residential (BAFEM Solar)</span>
@@ -110,20 +92,20 @@
                 <span class="option"><span class="checkbox"></span> C&I (Commercial Solar)</span>
               </span>
             </div>
-            <div class="row half">
+            <div class="row half right-side-row auditor-row">
               <label>Auditor(s)</label>
               <span class="value"> </span>
             </div>
-            <div class="row half">
+            <div class="row half weather-row">
               <label>Weather at audit</label>
-              <span class="value option-list inline">
+              <span class="value input-box option-list inline">
                 <span class="option"><span class="checkbox"></span> Clear</span>
                 <span class="option"><span class="checkbox"></span> Partly cloudy</span>
                 <span class="option"><span class="checkbox"></span> Overcast</span>
                 <span class="option"><span class="checkbox"></span> Rain</span>
               </span>
             </div>
-            <div class="row half">
+            <div class="row half right-side-row delivered-row">
               <label>Delivered under</label>
               <span class="value option-list stacked">
                 <span class="option"><span class="checkbox"></span> BAFEM Solar (residential)</span>
@@ -133,7 +115,7 @@
             </div>
             <div class="row">
               <label>Legacy BAFEM client?</label>
-              <span class="value inline-answer">
+              <span class="value input-box inline-answer">
                 <span class="option"><span class="checkbox"></span> Yes</span>
                 <span class="option"><span class="checkbox"></span> No</span>
               </span>
@@ -386,7 +368,7 @@
         </footer>
       </section>
 
-      <section class="page">
+      <section class="page page-four">
         <header class="brand-header">
           <h1>BASELOAD</h1>
           <div class="brand-sub">RENEWABLE ASSET MANAGEMENT</div>
@@ -395,19 +377,18 @@
         <div class="section-header slim">
           <h3>RECOMMENDED REMEDIATION</h3>
         </div>
-        <div class="remediation-box">
-          <p>
-            Summarise the recommended scope of work, critical items first. The office builds the itemised remediation quote and the client-facing Rescue Report from this.
-          </p>
-        </div>
+        <p class="remediation-intro">Summarise the recommended scope of work, critical items first. The office builds the itemised remediation quote and the client-facing Rescue Report from this.</p>
+        <div class="remediation-box"></div>
 
         <div class="section-header slim">
           <h3>AUDITOR SIGN-OFF</h3>
         </div>
 
         <div class="signoff-box">
-          <div class="sign-cell"><label>Auditor name</label></div>
-          <div class="sign-cell"><label>Signature / date</label></div>
+          <div class="sign-cell sign-label">Auditor name:</div>
+          <div class="sign-cell sign-entry"></div>
+          <div class="sign-cell sign-label">Signature / date:</div>
+          <div class="sign-cell sign-entry"></div>
         </div>
 
         <footer class="page-footer">
