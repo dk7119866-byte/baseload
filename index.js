@@ -23,8 +23,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const checks = document.querySelectorAll('.checkbox, .photo-box');
 
   checks.forEach((check) => {
+    const choiceGroup = check.dataset.choiceGroup;
+    const groupIndex = choiceGroup
+      ? [...document.querySelectorAll(`[data-choice-group="${choiceGroup}"]`)].indexOf(check)
+      : [...checks].indexOf(check);
+    const choiceKey = `baseload-commissioning-choice-${choiceGroup || 'check'}-${groupIndex}`;
+    const restoreChoice = () => {
+      const isChecked = localStorage.getItem(choiceKey) === 'true';
+      check.classList.toggle('checked', isChecked);
+      if (check.hasAttribute('role')) check.setAttribute('aria-checked', String(isChecked));
+    };
+
+    if (check.hasAttribute('role')) restoreChoice();
     check.addEventListener('click', () => {
-      check.classList.toggle('checked');
+      const isChecked = !check.classList.contains('checked');
+      if (choiceGroup && isChecked) {
+        document.querySelectorAll(`[data-choice-group="${choiceGroup}"]`).forEach((choice, index) => {
+          choice.classList.remove('checked');
+          choice.setAttribute('aria-checked', 'false');
+          localStorage.setItem(`baseload-commissioning-choice-${choiceGroup}-${index}`, 'false');
+        });
+      }
+      check.classList.toggle('checked', isChecked);
+      if (check.hasAttribute('role')) check.setAttribute('aria-checked', String(isChecked));
+      if (check.hasAttribute('role')) localStorage.setItem(choiceKey, String(isChecked));
+    });
+    check.addEventListener('keydown', (event) => {
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault();
+        check.click();
+      }
     });
   });
 
@@ -42,9 +70,97 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadPdfBtn = document.getElementById('downloadPdfBtn');
   if (downloadPdfBtn) {
     downloadPdfBtn.addEventListener('click', () => {
+      document.body.dataset.printView = 'rescueView';
       window.print();
     });
   }
+
+  const views = [...document.querySelectorAll('.view-panel')];
+  const navButtons = [...document.querySelectorAll('[data-view]')];
+  const showView = (viewId) => {
+    views.forEach((view) => view.classList.toggle('hidden', view.id !== viewId));
+    document.querySelectorAll('.nav-link').forEach((button) => {
+      button.classList.toggle('active', button.dataset.view === viewId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  navButtons.forEach((button) => {
+    button.addEventListener('click', () => showView(button.dataset.view));
+  });
+
+  const saveStatus = document.getElementById('recordSaveStatus');
+  const savedFieldKey = (name) => `baseload-commissioning-${name}`;
+  const savedInputs = document.querySelectorAll('[data-save]');
+
+  const restoreInput = (input) => {
+    const savedValue = localStorage.getItem(savedFieldKey(input.dataset.save));
+    if (savedValue !== null) input.value = savedValue;
+  };
+
+  const saveInput = (input) => {
+    localStorage.setItem(savedFieldKey(input.dataset.save), input.value);
+    if (saveStatus) saveStatus.textContent = 'Saved on this device.';
+  };
+
+  savedInputs.forEach((input) => {
+    restoreInput(input);
+    input.addEventListener('input', () => saveInput(input));
+    input.addEventListener('change', () => saveInput(input));
+  });
+
+  const equipmentRows = document.getElementById('equipmentRows');
+  const addEquipmentBtn = document.getElementById('addEquipmentBtn');
+  if (equipmentRows && addEquipmentBtn) {
+    addEquipmentBtn.addEventListener('click', () => {
+      const rowNumber = equipmentRows.rows.length + 1;
+      const row = equipmentRows.insertRow();
+      const fields = [
+        ['Equipment type', 'text'],
+        ['Manufacturer and model', 'text'],
+        ['Serial number', 'text'],
+        ['Rating or capacity', 'text'],
+        ['Installed quantity', 'number'],
+      ];
+
+      fields.forEach(([label, type], index) => {
+        const cell = row.insertCell();
+        const input = document.createElement('input');
+        input.type = type;
+        input.setAttribute('aria-label', label);
+        input.dataset.save = `equipment-${rowNumber}-${index}`;
+        if (type === 'number') input.min = '0';
+        cell.append(input);
+        restoreInput(input);
+        input.addEventListener('input', () => saveInput(input));
+        input.addEventListener('change', () => saveInput(input));
+      });
+    });
+  }
+
+  const recordFiles = document.getElementById('recordFiles');
+  const attachedFiles = document.getElementById('attachedFiles');
+  if (recordFiles && attachedFiles) {
+    recordFiles.addEventListener('change', () => {
+      attachedFiles.replaceChildren();
+      [...recordFiles.files].forEach((file) => {
+        const item = document.createElement('span');
+        item.className = 'attached-file';
+        item.textContent = `${file.name} · ${(file.size / 1024).toFixed(0)} KB`;
+        attachedFiles.append(item);
+      });
+    });
+  }
+
+  const printRecordBtn = document.getElementById('printRecordBtn');
+  if (printRecordBtn) {
+    printRecordBtn.addEventListener('click', () => {
+      document.body.dataset.printView = document.querySelector('.view-panel:not(.hidden)')?.id || 'commissioningView';
+      window.print();
+    });
+  }
+
+  window.addEventListener('afterprint', () => delete document.body.dataset.printView);
 
   const signinForm = document.getElementById('signinForm');
   const signupForm = document.getElementById('signupForm');

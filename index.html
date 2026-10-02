@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BaseLoad Audit Report</title>
+    <title>BASELOAD | Commissioning and Asset Record</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -34,7 +34,145 @@
     </div>
 
     <main class="document hidden" id="documentContainer">
-      <section class="download-strip"><button type="button" class="pdf-btn" id="downloadPdfBtn">Download as PDF</button></section>
+      <header class="app-topbar">
+        <a class="app-brand" href="#dashboard" data-view="dashboardView" aria-label="BASELOAD dashboard">
+          <span class="brand-mark">B</span><span><strong>BASELOAD</strong><small>RENEWABLE ASSET MANAGEMENT</small></span>
+        </a>
+        <nav class="app-nav" aria-label="Main navigation">
+          <button class="nav-link active" type="button" data-view="dashboardView">Dashboard</button>
+          <button class="nav-link" type="button" data-view="rescueView">Rescue audit field sheet</button>
+          <button class="nav-link" type="button" data-view="commissioningView">Commissioning &amp; asset record</button>
+        </nav>
+        <div class="topbar-status"><span class="status-dot"></span> O&amp;M workspace</div>
+      </header>
+
+      <section class="view-panel dashboard-view" id="dashboardView">
+        <div class="dashboard-heading">
+          <div><p class="eyebrow">BASELOAD / OPERATIONS &amp; MAINTENANCE</p><h1>Asset operations</h1><p class="dashboard-intro">A working view of BASELOAD renewable assets, field audits, commissioning and ongoing care.</p></div>
+          <button class="action-button" type="button" data-view="commissioningView"><span aria-hidden="true">+</span> New asset record</button>
+        </div>
+        <div class="dashboard-overview">
+          <div class="overview-label">WORKSPACE</div>
+          <div class="overview-copy"><strong>BASELOAD O&amp;M</strong><span>Renewable asset management</span></div>
+          <div class="overview-focus"><span class="status-dot"></span> Field operations</div>
+        </div>
+        <div class="dashboard-section-heading"><div><p class="eyebrow">FIELD WORK</p><h2>Service records</h2></div><span>2 work areas</span></div>
+        <div class="work-area-list">
+          <button class="work-area" type="button" data-view="rescueView">
+            <span class="work-icon audit-icon" aria-hidden="true">RA</span>
+            <span class="work-copy"><strong>Rescue audit field sheet</strong><small>Capture site conditions, findings, severity and recommended remediation.</small></span>
+            <span class="work-meta"><strong>FIELD AUDIT</strong><small>Internal document</small></span>
+            <span class="work-arrow" aria-hidden="true">&#8594;</span>
+          </button>
+          <button class="work-area" type="button" data-view="commissioningView">
+            <span class="work-icon record-icon" aria-hidden="true">CR</span>
+            <span class="work-copy"><strong>Commissioning and asset record</strong><small>Register installed equipment, capture handover readings and plot system performance.</small></span>
+            <span class="work-meta"><strong>ASSET RECORD</strong><small>Editable &amp; printable</small></span>
+            <span class="work-arrow" aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+        <div class="dashboard-footer"><span>BASELOAD RENEWABLE ASSET MANAGEMENT</span><span>OPERATIONS &amp; MAINTENANCE</span></div>
+      </section>
+
+      <section class="view-panel commissioning-view hidden" id="commissioningView">
+        <div class="record-toolbar record-screen-toolbar">
+          <button class="back-link" type="button" data-view="dashboardView">&#8592; Dashboard</button>
+          <button type="button" class="action-button print-record" id="printRecordBtn"><span aria-hidden="true">&#8595;</span> Print record</button>
+        </div>
+        <article class="commissioning-sheet">
+          <header class="sheet-brand-row">
+            <div class="sheet-brand"><div class="sheet-logo">BASELOAD</div><div class="sheet-brand-sub">RENEWABLE ASSET MANAGEMENT</div></div>
+            <address class="sheet-contact">Baseload Renewable Asset Management Limited<br>38 Oladimeji Aio Street, Lekki Phase 1, Lagos<br>+234 901 744 5136<br>baseloadram@gmail.com</address>
+          </header>
+          <div class="sheet-title-row">
+            <div><h1>Commissioning and asset<br>record</h1><span class="sheet-title-rule"></span><p class="sheet-intro">Office record, kept in the commissioning book. The commissioning date starts the<br class="desktop-break"> warranty and the asset's Baseload asset record.</p></div>
+            <div class="sheet-number"><label>No. <input type="text" value="0001" data-save="record-number" aria-label="Record number"></label><label>Invoice no. <input type="text" data-save="invoice-number"></label><label>Commissioning date <input type="text" placeholder="________ / ________ / ________" data-save="commissioning-date"></label></div>
+          </div>
+
+          <section class="sheet-section">
+            <h2>The asset</h2>
+            <div class="asset-fields">
+              <label>Client or owner<input data-save="asset-owner" aria-label="Client or owner"></label>
+              <label>System size, kWp<input data-save="system-size" aria-label="System size in kWp"></label>
+              <label>Site address<input data-save="site-address" aria-label="Site address"></label>
+              <label>Inverter model and serial<input data-save="inverter-model-serial" aria-label="Inverter model and serial"></label>
+              <label>Site contact and phone<input data-save="site-contact-phone" aria-label="Site contact and phone"></label>
+              <label>Battery model and kWh<input data-save="battery-model-capacity" aria-label="Battery model and kWh"></label>
+              <label class="asset-array">Array: modules, count x watts<input data-save="array-modules-count-watts" aria-label="Array modules, count by watts"></label>
+            </div>
+            <div class="choice-row commissioned-by"><span>Commissioned by</span>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="commissioned-by"></span> Kommercial Solar</label>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="commissioned-by"></span> BAFEM Solar</label>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="commissioned-by"></span> Other contractor</label>
+            </div>
+          </section>
+
+          <section class="sheet-section checklist-section">
+            <h2>Commissioning checklist</h2>
+            <div class="checklist-grid">
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Mounting, enclosures and cable runs secure and tidy</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> DC side: polarity, string voltages and PV isolation verified</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> AC side: connections, breakers and protection verified</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Earthing and bonding checked and continuous</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Inverter parameters set to the site and grid profile</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Battery installed, communicating, firmware current</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Charge, discharge and state of charge behave correctly</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Grid or generator changeover and backup transfer tested</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Anti-islanding and safe shutdown verified</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Safe shutdown and restart demonstrated to the client</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Client walkthrough given, manuals and warranty handed over</label>
+              <label><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Site left clean, labels and isolator signs fitted</label>
+            </div>
+          </section>
+
+          <section class="sheet-section measured-section">
+            <h2>Measured values</h2>
+            <div class="measured-grid">
+              <label>PV string voltage, V<input data-save="pv-string-voltage"></label>
+              <label>AC output voltage, V<input data-save="ac-output-voltage"></label>
+              <label>Load at test, kW<input data-save="load-at-test"></label>
+              <label>Battery voltage, V<input data-save="battery-voltage"></label>
+              <label>Battery state of charge, %<input data-save="battery-soc"></label>
+              <label>Earth resistance, ohm<input data-save="earth-resistance"></label>
+            </div>
+          </section>
+
+          <section class="sheet-section registration-section">
+            <h2>Asset registration</h2>
+            <div class="asset-fields registration-fields">
+              <label>Baseload asset ID<input data-save="baseload-asset-id"></label>
+              <label>Care plan start date<input data-save="care-plan-start-date"></label>
+              <label>SOLARMAN logger serial<input data-save="solarman-logger-serial"></label>
+              <label>First inspection due<input data-save="first-inspection-due"></label>
+            </div>
+            <div class="choice-row care-plan-row"><span>Care plan</span>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="care-plan"></span> Monitor, 12 months included</label>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="care-plan"></span> Maintain</label>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false" data-choice-group="care-plan"></span> Assure</label>
+            </div>
+            <div class="choice-row registration-checks">
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Monitoring online and reporting to Baseload</label>
+              <label class="sheet-choice"><span class="checkbox" role="checkbox" tabindex="0" aria-checked="false"></span> Verified seal applied to the inverter</label>
+            </div>
+          </section>
+
+          <section class="sheet-section outstanding-section">
+            <h2>Outstanding items</h2>
+            <textarea rows="2" data-save="outstanding-items" aria-label="Outstanding items"></textarea>
+          </section>
+
+          <section class="sheet-signatures">
+            <label class="signature-block"><input class="signature-line" data-save="commissioning-engineer-signoff" aria-label="Commissioning engineer name, signature and date"><strong>Commissioning engineer</strong><span>For the contractor. Name, signature and date</span></label>
+            <label class="signature-block"><input class="signature-line" data-save="asset-registered-by-signoff" aria-label="Asset registered by name, signature and date"><strong>Asset registered by</strong><span>For Baseload. Name, signature and date</span></label>
+            <div class="stamp-box">Company stamp</div>
+          </section>
+          <footer class="sheet-footer"><span>Baseload is part of the Kommercial Solar family of companies.</span><span>Page 1 of 1</span></footer>
+        </article>
+        <div class="record-save-status" id="recordSaveStatus" aria-live="polite">Changes save automatically on this device.</div>
+      </section>
+
+      <section class="view-panel rescue-view hidden" id="rescueView">
+        <section class="download-strip"><button type="button" class="pdf-btn" id="downloadPdfBtn">Download as PDF</button></section>
       <section class="page">
         <header class="brand-header">
           <h1>BASELOAD</h1>
@@ -396,6 +534,7 @@
           <span>• Internal field sheet. Not for the client. Baseload Renewable Asset Management Limited.</span>
           <span class="page-number">Page 4</span>
         </footer>
+      </section>
       </section>
     </main>
 
