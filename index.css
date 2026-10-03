@@ -3007,14 +3007,14 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 4mm;
+    margin: 0;
   }
 
   body[data-print-view="commissioningView"] .commissioning-sheet {
     width: 100%;
     max-width: none;
     min-height: 0;
-    height: 289mm;
+    height: 297mm;
     margin: 0;
     padding: 5mm 6mm 5mm;
     box-shadow: none;
@@ -3067,16 +3067,18 @@ body {
   }
 
   body[data-print-view="commissioningView"] .sheet-section {
-    margin-top: 1mm;
+    margin-top: 2.4mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-section h2 {
-    margin-bottom: 0.8mm;
-    font-size: 8pt;
+    margin-bottom: 1.2mm;
+    padding-bottom: 1mm;
+    border-bottom: 0.35mm solid #aeb2bc;
+    font-size: 9pt;
   }
 
   body[data-print-view="commissioningView"] .asset-fields {
-    row-gap: 0.4mm;
+    row-gap: 0.7mm;
     column-gap: 4mm;
   }
 
@@ -3086,10 +3088,17 @@ body {
     font-size: 5.5pt;
   }
 
+  body[data-print-view="commissioningView"] .asset-fields label,
+  body[data-print-view="commissioningView"] .measured-grid label,
+  body[data-print-view="commissioningView"] .choice-row,
+  body[data-print-view="commissioningView"] .inverter-field {
+    font-size: 6.5pt;
+  }
+
   body[data-print-view="commissioningView"] .asset-fields input,
   body[data-print-view="commissioningView"] .measured-grid input {
     min-height: 3.5mm;
-    font-size: 6pt;
+    font-size: 7pt;
   }
 
   body[data-print-view="commissioningView"] .inverter-field {
@@ -3101,7 +3110,7 @@ body {
   }
 
   body[data-print-view="commissioningView"] .inverter-row input {
-    font-size: 6pt;
+    font-size: 7pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-number input,
@@ -3135,39 +3144,39 @@ body {
 
   body[data-print-view="commissioningView"] .sheet-choice,
   body[data-print-view="commissioningView"] .checklist-grid label {
-    font-size: 5.5pt;
-    line-height: 1.05;
+    font-size: 6.8pt;
+    line-height: 1.15;
   }
 
   body[data-print-view="commissioningView"] .checkbox {
-    width: 3mm;
-    height: 3mm;
-    flex-basis: 3mm;
+    width: 3.4mm;
+    height: 3.4mm;
+    flex-basis: 3.4mm;
   }
 
   body[data-print-view="commissioningView"] .checklist-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 2mm;
-    row-gap: 0.5mm;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 4mm;
+    row-gap: 1.5mm;
   }
 
   body[data-print-view="commissioningView"] .checklist-grid label {
-    gap: 1mm;
+    gap: 1.5mm;
   }
 
   body[data-print-view="commissioningView"] .measured-grid {
-    gap: 0.5mm 3mm;
+    gap: 1.5mm 4mm;
   }
 
   body[data-print-view="commissioningView"] .outstanding-section textarea {
-    height: 7mm;
-    line-height: 3mm;
+    height: 9mm;
+    line-height: 4mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-signatures {
     grid-template-columns: 1fr 1fr 0.8fr;
     gap: 4mm;
-    padding-top: 2mm;
+    padding-top: 3mm;
   }
 
   body[data-print-view="commissioningView"] .signature-block strong {
