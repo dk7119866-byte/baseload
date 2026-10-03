@@ -3007,18 +3007,18 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 7mm;
+    margin: 4mm;
   }
 
   body[data-print-view="commissioningView"] .commissioning-sheet {
     width: 100%;
     max-width: none;
     min-height: 0;
-    height: 276mm;
+    height: 289mm;
     margin: 0;
-    padding: 9mm 8mm 9mm;
+    padding: 5mm 6mm 5mm;
     box-shadow: none;
-    font-size: 8pt;
+    font-size: 7pt;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
     break-inside: avoid;
@@ -3030,7 +3030,7 @@ body {
   }
 
   body[data-print-view="commissioningView"] .sheet-logo {
-    font-size: 25pt;
+    font-size: 21pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-brand-sub {
@@ -3043,51 +3043,75 @@ body {
 
   body[data-print-view="commissioningView"] .sheet-title-row {
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 12px;
-    margin: 8mm 0 4mm;
+    gap: 3mm;
+    margin: 2mm 0 1mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-title-row h1 {
-    font-size: 17pt;
+    font-size: 14pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-intro {
-    margin-top: 4mm;
-    font-size: 7pt;
+    margin-top: 2mm;
+    font-size: 6pt;
+    line-height: 1.2;
   }
 
   body[data-print-view="commissioningView"] .sheet-number {
-    gap: 8px;
-    font-size: 6.5pt;
+    gap: 3px;
+    font-size: 6pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-number input {
-    font-size: 7pt;
+    font-size: 6pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-section {
-    margin-top: 3mm;
+    margin-top: 1mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-section h2 {
-    margin-bottom: 2mm;
-    font-size: 9pt;
+    margin-bottom: 0.8mm;
+    font-size: 8pt;
   }
 
   body[data-print-view="commissioningView"] .asset-fields {
-    row-gap: 1mm;
-    column-gap: 6mm;
+    row-gap: 0.4mm;
+    column-gap: 4mm;
   }
 
   body[data-print-view="commissioningView"] .asset-fields label,
   body[data-print-view="commissioningView"] .measured-grid label,
   body[data-print-view="commissioningView"] .choice-row {
-    font-size: 6.5pt;
+    font-size: 5.5pt;
   }
 
   body[data-print-view="commissioningView"] .asset-fields input,
   body[data-print-view="commissioningView"] .measured-grid input {
-    min-height: 5mm;
+    min-height: 3.5mm;
+    font-size: 6pt;
+  }
+
+  body[data-print-view="commissioningView"] .inverter-field {
+    font-size: 5.5pt;
+  }
+
+  body[data-print-view="commissioningView"] .inverter-row {
+    gap: 2mm;
+  }
+
+  body[data-print-view="commissioningView"] .inverter-row input {
+    font-size: 6pt;
+  }
+
+  body[data-print-view="commissioningView"] .sheet-number input,
+  body[data-print-view="commissioningView"] .asset-fields input,
+  body[data-print-view="commissioningView"] .measured-grid input,
+  body[data-print-view="commissioningView"] .outstanding-section textarea,
+  body[data-print-view="commissioningView"] .signature-line {
+    color: #20212b !important;
+    -webkit-text-fill-color: #20212b;
+    opacity: 1;
   }
 
   body[data-print-view="commissioningView"] .add-inverter,
@@ -3096,9 +3120,9 @@ body {
   }
 
   body[data-print-view="commissioningView"] .choice-row {
-    grid-template-columns: 23mm repeat(3, minmax(0, 1fr));
-    gap: 3mm;
-    margin-top: 2mm;
+    grid-template-columns: 18mm repeat(3, minmax(0, 1fr));
+    gap: 1mm;
+    margin-top: 1mm;
   }
 
   body[data-print-view="commissioningView"] .care-plan-row {
@@ -3111,33 +3135,39 @@ body {
 
   body[data-print-view="commissioningView"] .sheet-choice,
   body[data-print-view="commissioningView"] .checklist-grid label {
-    font-size: 6.1pt;
+    font-size: 5.5pt;
+    line-height: 1.05;
   }
 
   body[data-print-view="commissioningView"] .checkbox {
-    width: 4mm;
-    height: 4mm;
-    flex-basis: 4mm;
+    width: 3mm;
+    height: 3mm;
+    flex-basis: 3mm;
   }
 
   body[data-print-view="commissioningView"] .checklist-grid {
-    column-gap: 5mm;
-    row-gap: 1.4mm;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 2mm;
+    row-gap: 0.5mm;
+  }
+
+  body[data-print-view="commissioningView"] .checklist-grid label {
+    gap: 1mm;
   }
 
   body[data-print-view="commissioningView"] .measured-grid {
-    gap: 1mm 5mm;
+    gap: 0.5mm 3mm;
   }
 
   body[data-print-view="commissioningView"] .outstanding-section textarea {
-    height: 13mm;
-    line-height: 6mm;
+    height: 7mm;
+    line-height: 3mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-signatures {
     grid-template-columns: 1fr 1fr 0.8fr;
-    gap: 8mm;
-    padding-top: 6mm;
+    gap: 4mm;
+    padding-top: 2mm;
   }
 
   body[data-print-view="commissioningView"] .signature-block strong {
@@ -3150,17 +3180,17 @@ body {
   }
 
   body[data-print-view="commissioningView"] .stamp-box {
-    min-height: 25mm;
+    min-height: 15mm;
   }
 
   body[data-print-view="commissioningView"] .sheet-footer {
-    margin: auto -8mm -9mm;
-    padding: 4mm 8mm 3mm;
+    margin: auto -6mm -5mm;
+    padding: 1.5mm 6mm 1.5mm;
     font-size: 6pt;
   }
 
   body[data-print-view="commissioningView"] .sheet-footer::after {
-    height: 3mm;
+    height: 2mm;
   }
 
   body[data-print-view="commissioningView"] .record-save-status {
