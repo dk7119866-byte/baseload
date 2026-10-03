@@ -95,8 +95,18 @@
               <label>Client or owner<input data-save="asset-owner" aria-label="Client or owner"></label>
               <label>System size, kWp<input data-save="system-size" aria-label="System size in kWp"></label>
               <label>Site address<input data-save="site-address" aria-label="Site address"></label>
-              <label>Inverter model and serial<input data-save="inverter-model-serial" aria-label="Inverter model and serial"></label>
               <label>Site contact and phone<input data-save="site-contact-phone" aria-label="Site contact and phone"></label>
+              <div class="inverter-field">
+                <span class="inverter-field-title">Inverter model and serial</span>
+                <div class="inverter-rows" id="inverterRows">
+                  <div class="inverter-row" data-inverter-row="1">
+                    <label>Model<input data-save="inverter-1-model" aria-label="Inverter model"></label>
+                    <label>Serial number<input data-save="inverter-1-serial" aria-label="Inverter serial number"></label>
+                    <button type="button" class="remove-inverter" aria-label="Remove inverter" title="Remove inverter">&#215;</button>
+                  </div>
+                </div>
+                <button type="button" class="add-inverter" id="addInverterBtn"><span aria-hidden="true">+</span> Add inverter</button>
+              </div>
               <label>Battery model and kWh<input data-save="battery-model-capacity" aria-label="Battery model and kWh"></label>
               <label class="asset-array">Array: modules, count x watts<input data-save="array-modules-count-watts" aria-label="Array modules, count by watts"></label>
             </div>

@@ -109,6 +109,81 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('change', () => saveInput(input));
   });
 
+  const inverterRows = document.getElementById('inverterRows');
+  const addInverterBtn = document.getElementById('addInverterBtn');
+  if (inverterRows && addInverterBtn) {
+    const inverterCountKey = savedFieldKey('inverter-count');
+    const legacyInverterValue = localStorage.getItem(savedFieldKey('inverter-model-serial'));
+    const firstInverterModel = inverterRows.querySelector('[data-save="inverter-1-model"]');
+    if (legacyInverterValue !== null && localStorage.getItem(savedFieldKey('inverter-1-model')) === null) {
+      firstInverterModel.value = legacyInverterValue;
+    }
+
+    const updateInverterRows = () => {
+      const rows = [...inverterRows.querySelectorAll('.inverter-row')];
+      rows.forEach((row, index) => {
+        const rowNumber = index + 1;
+        row.dataset.inverterRow = String(rowNumber);
+        row.querySelectorAll('input').forEach((input, fieldIndex) => {
+          const saveName = `inverter-${rowNumber}-${fieldIndex === 0 ? 'model' : 'serial'}`;
+          if (input.dataset.save !== saveName) localStorage.removeItem(savedFieldKey(input.dataset.save));
+          input.dataset.save = saveName;
+          saveInput(input);
+        });
+        row.querySelector('.remove-inverter').disabled = rows.length === 1;
+      });
+      localStorage.setItem(inverterCountKey, String(rows.length));
+    };
+
+    const addInverterRow = (rowNumber) => {
+      const row = document.createElement('div');
+      row.className = 'inverter-row';
+      row.dataset.inverterRow = String(rowNumber);
+
+      [['Model', 'model'], ['Serial number', 'serial']].forEach(([label, field]) => {
+        const fieldLabel = document.createElement('label');
+        fieldLabel.textContent = label;
+        const input = document.createElement('input');
+        input.setAttribute('aria-label', `Inverter ${label.toLowerCase()}`);
+        input.dataset.save = `inverter-${rowNumber}-${field}`;
+        fieldLabel.append(input);
+        row.append(fieldLabel);
+        input.addEventListener('input', () => saveInput(input));
+        input.addEventListener('change', () => saveInput(input));
+      });
+
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.className = 'remove-inverter';
+      removeButton.setAttribute('aria-label', 'Remove inverter');
+      removeButton.title = 'Remove inverter';
+      removeButton.innerHTML = '&#215;';
+      row.append(removeButton);
+      inverterRows.append(row);
+      restoreInput(row.querySelector('input'));
+      restoreInput(row.querySelectorAll('input')[1]);
+    };
+
+    inverterRows.addEventListener('click', (event) => {
+      if (!event.target.closest('.remove-inverter') || inverterRows.children.length === 1) return;
+      const row = event.target.closest('.inverter-row');
+      row.querySelectorAll('input').forEach((input) => localStorage.removeItem(savedFieldKey(input.dataset.save)));
+      row.remove();
+      updateInverterRows();
+    });
+
+    const savedCount = Number.parseInt(localStorage.getItem(inverterCountKey) || '1', 10);
+    const rowCount = Number.isInteger(savedCount) ? Math.min(Math.max(savedCount, 1), 50) : 1;
+    for (let rowNumber = 2; rowNumber <= rowCount; rowNumber += 1) addInverterRow(rowNumber);
+    updateInverterRows();
+
+    addInverterBtn.addEventListener('click', () => {
+      if (inverterRows.children.length >= 50) return;
+      addInverterRow(inverterRows.children.length + 1);
+      updateInverterRows();
+    });
+  }
+
   const equipmentRows = document.getElementById('equipmentRows');
   const addEquipmentBtn = document.getElementById('addEquipmentBtn');
   if (equipmentRows && addEquipmentBtn) {

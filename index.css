@@ -2653,6 +2653,90 @@ body {
   grid-column: 1 / -1;
 }
 
+
+.inverter-field {
+  grid-column: 1 / -1;
+  min-width: 0;
+  color: #7b8598;
+  font-size: 0.73rem;
+}
+
+.inverter-field-title {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.inverter-rows {
+  display: grid;
+  gap: 4px;
+}
+
+.inverter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 10px;
+}
+
+.inverter-row label {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.inverter-row input {
+  min-width: 0;
+  min-height: 23px;
+  flex: 1;
+  width: 1px;
+  padding: 1px 2px 3px;
+  border: 0;
+  border-bottom: 1px solid #aeb2bc;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #23252e;
+  font: inherit;
+}
+
+.inverter-row input:focus {
+  border-bottom-color: #202e72;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.add-inverter,
+.remove-inverter {
+  border: 0;
+  background: transparent;
+  color: #202e72;
+  cursor: pointer;
+}
+
+.add-inverter {
+  margin-top: 3px;
+  padding: 2px 0;
+  font: inherit;
+  font-size: 0.68rem;
+}
+
+.add-inverter span {
+  font-size: 1rem;
+  vertical-align: -1px;
+}
+
+.remove-inverter {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 1.15rem;
+}
+
+.remove-inverter:disabled {
+  visibility: hidden;
+}
+
 .choice-row {
   display: grid;
   grid-template-columns: 86px repeat(3, minmax(0, 1fr));
@@ -2869,6 +2953,20 @@ body {
     column-gap: 12px;
   }
 
+  .inverter-row {
+    gap: 6px;
+  }
+
+  .inverter-row label {
+    display: block;
+    white-space: normal;
+  }
+
+  .inverter-row input {
+    display: block;
+    width: 100%;
+  }
+
   .asset-fields label,
   .measured-grid label,
   .choice-row,
@@ -2990,6 +3088,11 @@ body {
   body[data-print-view="commissioningView"] .asset-fields input,
   body[data-print-view="commissioningView"] .measured-grid input {
     min-height: 5mm;
+  }
+
+  body[data-print-view="commissioningView"] .add-inverter,
+  body[data-print-view="commissioningView"] .remove-inverter {
+    display: none;
   }
 
   body[data-print-view="commissioningView"] .choice-row {
